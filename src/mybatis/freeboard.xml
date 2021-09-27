@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   <!-- sql mapper -->
+<mapper namespace="freeboard"> <!-- namespace : 일종의 식별역할의 변수 -->
+			<!-- 맵이 인터페이스, 해쉬맵이 구현체 -->
+	<select id="getList" resultType="dto.Freeboard" parameterType="java.util.Map">
+	select * from freeboard f order by idx desc limit #{startNo},#{pageSize}
+	</select>
+	<select id="selectByIdx" resultType="dto.Freeboard" parameterType="int"> <!-- IDX를 KEY값으로 하나 가져오겠다 -->
+	select * from freeboard where idx=#{idx}
+	</select>
+	<select id="getCount" resultType="int">
+	select count(*) from freeboard
+	</select>
+</mapper>
